@@ -14,13 +14,6 @@ const DataSchema = mongoose.Schema({
 }, {versionKey: false});
 
 //Fire a Function before doc saved for the hashing password
-DataSchema.pre('save', async function (next) {
-
-    const salt = await bcrypt.genSalt();
-    this.password = await bcrypt.hash(this.password, salt)
-    next();
-
-});
 
 
 const UserModel = mongoose.model('Profile', DataSchema)
